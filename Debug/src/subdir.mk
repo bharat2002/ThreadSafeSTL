@@ -7,13 +7,13 @@ CPP_SRCS += \
 ../src/Main.cpp \
 ../src/ThreadSafeVector.cpp 
 
-OBJS += \
-./src/Main.o \
-./src/ThreadSafeVector.o 
-
 CPP_DEPS += \
 ./src/Main.d \
 ./src/ThreadSafeVector.d 
+
+OBJS += \
+./src/Main.o \
+./src/ThreadSafeVector.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,4 +24,11 @@ src/%.o: ../src/%.cpp src/subdir.mk
 	@echo 'Finished building: $<'
 	@echo ' '
 
+
+clean: clean-src
+
+clean-src:
+	-$(RM) ./src/Main.d ./src/Main.o ./src/ThreadSafeVector.d ./src/ThreadSafeVector.o
+
+.PHONY: clean-src
 
